@@ -808,6 +808,180 @@
     cursor: pointer;
   }
 
+  /* ── LOADING ── */
+  .products-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 80px 0;
+  }
+
+  .loading-dot {
+    width: 8px; height: 8px;
+    background: var(--white-dim);
+    border-radius: 50%;
+    animation: loadPulse 1.2s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes loadPulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .products-error {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--white-dim);
+    font-size: 16px;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,18,32,0.85);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--navy-mid);
+    border: 1px solid var(--white-border);
+    max-width: 860px;
+    width: 100%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    z-index: 10;
+  }
+
+  .modal-close:hover { opacity: 1; }
+
+  .modal-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .modal-img-wrap {
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: var(--navy-light);
+  }
+
+  .modal-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .modal-details {
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .modal-category {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 10px;
+  }
+
+  .modal-name {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .modal-price {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    color: var(--white-dim);
+    margin-bottom: 20px;
+  }
+
+  .modal-desc {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--white-dim);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    font-weight: 500;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+
+  .wa-btn:hover { background: #1ebe5d; }
+
+  @media (max-width: 640px) {
+    .modal-inner { grid-template-columns: 1fr; }
+    .modal-img-wrap { aspect-ratio: 4/3; }
+    .modal-details { padding: 28px 24px; }
+  }
+
+  /* ── WA FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: #25D366;
+    color: #fff;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 400;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .wa-float:hover { transform: scale(1.08); background: #1ebe5d; }
+
   @media (max-width: 1100px) {
     .nav-inner { gap: 20px; }
     .nav-link { font-size: 10px; letter-spacing: 2px; }
@@ -992,46 +1166,41 @@
     <p class="section-label">Just In</p>
     <h2 class="section-title">New Arrivals</h2>
     <div class="section-divider"></div>
-    <div class="products-grid">
-      <div class="product-card">
-        <div class="product-img" data-label="Kebaya Set · Heritage"></div>
-        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
-        <div class="product-info">
-          <p class="product-category">Kebaya Sets · Ceremony</p>
-          <p class="product-name">The Kartini Set</p>
-          <p class="product-price">Rp 2.850.000</p>
-        </div>
+    <div class="products-grid" id="productsGrid">
+      <div class="products-loading" id="productsLoading">
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
+        <div class="loading-dot"></div>
       </div>
-      <div class="product-card">
-        <div class="product-img" data-label="Scarf · Flora"></div>
-        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
-        <div class="product-info">
-          <p class="product-category">Scarves · Flora</p>
-          <p class="product-name">Anggrek Silk Scarf</p>
-          <p class="product-price">Rp 890.000</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img" data-label="Camisole · Heritage"></div>
-        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
-        <div class="product-info">
-          <p class="product-category">Camisoles · Heritage</p>
-          <p class="product-name">The Dewi Camisole</p>
-          <p class="product-price">Rp 1.250.000</p>
-        </div>
-      </div>
-      <div class="product-card">
-        <div class="product-img" data-label="Skirt · Midi"></div>
-        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
-        <div class="product-info">
-          <p class="product-category">Skirts · Midi</p>
-          <p class="product-name">The Peranakan Midi</p>
-          <p class="product-price">Rp 1.650.000</p>
-        </div>
-      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;">
+      <a href="#" class="hero-cta" id="viewAllBtn" style="display:none;">View All Products</a>
     </div>
   </div>
 </section>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&#x2715;</button>
+    <div class="modal-inner">
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="">
+      </div>
+      <div class="modal-details">
+        <p class="modal-category" id="modalCategory"></p>
+        <h3 class="modal-name" id="modalName"></h3>
+        <div class="hero-divider" style="margin:16px 0;"></div>
+        <p class="modal-price" id="modalPrice"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <a class="wa-btn" id="modalWaBtn" href="#" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- FEATURED COLLECTION -->
 <div class="featured">
@@ -1182,29 +1351,198 @@
   </div>
 </div>
 
+<!-- WA FLOAT BUTTON -->
+<a class="wa-float" href="https://wa.me/6281234567890" target="_blank" title="Chat via WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <script>
+  // ════════════════════════════════════════════
+  // KONFIGURASI — EDIT BAGIAN INI
+  // ════════════════════════════════════════════
+  const CONFIG = {
+    // Nomor WhatsApp (format internasional, tanpa + atau spasi)
+    WA_NUMBER: '628979797669',
+
+    // Google Sheets ID — ambil dari URL spreadsheet kamu:
+    // https://docs.google.com/spreadsheets/d/SHEETS_ID_DI_SINI/edit
+    SHEETS_ID: 'MASUKKAN_SHEETS_ID_DISINI',
+
+    // Nama sheet tab (default: Sheet1)
+    SHEET_NAME: 'Products',
+
+    // Berapa produk ditampilkan di homepage
+    MAX_DISPLAY: 8,
+  };
+  // ════════════════════════════════════════════
+
+  // Fetch produk dari Google Sheets (harus Public / Anyone with link can view)
+  async function loadProducts() {
+    const grid = document.getElementById('productsGrid');
+    const loading = document.getElementById('productsLoading');
+
+    // Jika Sheets ID belum diisi, tampilkan demo produk
+    if (CONFIG.SHEETS_ID === 'MASUKKAN_SHEETS_ID_DISINI') {
+      loading.remove();
+      const demoProducts = [
+        { id:0, name:'The Kartini Set', category:'Kebaya Sets', subcat:'Ceremony', price:2850000, img:'' },
+        { id:1, name:'Anggrek Silk Scarf', category:'Scarves', subcat:'Flora', price:890000, img:'' },
+        { id:2, name:'The Dewi Camisole', category:'Camisoles', subcat:'Heritage', price:1250000, img:'' },
+        { id:3, name:'The Peranakan Midi', category:'Skirts', subcat:'Midi', price:1650000, img:'' },
+      ];
+      demoProducts.forEach((p, i) => grid.appendChild(createProductCard(p, i)));
+      observeCards();
+      return;
+    }
+
+    try {
+      const url = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEETS_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}`;
+      const res = await fetch(url);
+      const text = await res.text();
+      // Google wraps response in google.visualization.Query.setResponse(...)
+      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*?)\);/)[1]);
+
+      const rows = json.table.rows;
+      if (!rows || rows.length === 0) {
+        loading.remove();
+        grid.innerHTML = `<div class="products-error">Belum ada produk di spreadsheet.</div>`;
+        return;
+      }
+
+      loading.remove();
+
+      // Kolom: A=Nama, B=Kategori, C=Sub-kategori, D=Harga, E=Deskripsi, F=Foto1, G=Foto2, H=Foto3, I=Foto4, J=Sizes, K=Details, L=Fit, M=New Arrivals, N=Aktif
+      const products = rows
+        .map((row, i) => ({
+          id:       i,
+          name:     row.c[0]?.v || '',
+          category: row.c[1]?.v || '',
+          subcat:   row.c[2]?.v || '',
+          price:    row.c[3]?.v || '',
+          desc:     row.c[4]?.v || '',
+          img:      row.c[5]?.v || '',   // pakai foto pertama untuk card
+          newArr:   row.c[12]?.v,
+          active:   row.c[13]?.v,
+        }))
+        .filter(p => p.active !== false && p.active !== 'FALSE' && p.name);
+
+      const newArrivals = products
+        .filter(p => p.newArr === true || p.newArr === 'TRUE')
+        .slice(0, CONFIG.MAX_DISPLAY);
+
+      const toShow = newArrivals.length > 0 ? newArrivals : products.slice(0, CONFIG.MAX_DISPLAY);
+
+      toShow.forEach((p, i) => {
+        const card = createProductCard(p, i);
+        grid.appendChild(card);
+      });
+
+      // Show View All if more products exist
+      if (products.length > CONFIG.MAX_DISPLAY) {
+        document.getElementById('viewAllBtn').style.display = 'inline-block';
+      }
+
+      // Trigger scroll animation
+      observeCards();
+
+    } catch (err) {
+      console.error(err);
+      loading.remove();
+      grid.innerHTML = `<div class="products-error">Gagal memuat produk. Pastikan Google Sheets sudah di-publish ke publik.</div>`;
+    }
+  }
+
+  function createProductCard(p, index) {
+    const card = document.createElement('a');
+    card.className = 'product-card';
+    card.href = `product.html?id=${p.id}`;
+    card.style.cssText = 'text-decoration:none;color:inherit;display:block;';
+    card.style.animationDelay = `${index * 0.1}s`;
+
+    const imgHtml = p.img
+      ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;">`
+      : ``;
+
+    const catLabel = p.subcat ? `${p.category} · ${p.subcat}` : p.category;
+    const priceFormatted = formatPrice(p.price);
+
+    card.innerHTML = `
+      <div class="product-img" data-label="${catLabel}" style="position:relative;overflow:hidden;">
+        ${imgHtml}
+      </div>
+      <div class="product-overlay">
+        <span class="quick-view">View Product</span>
+      </div>
+      <div class="product-info">
+        <p class="product-category">${catLabel}</p>
+        <p class="product-name">${p.name}</p>
+        <p class="product-price">${priceFormatted}</p>
+      </div>
+    `;
+    return card;
+  }
+
+  function formatPrice(val) {
+    if (!val) return '';
+    const num = typeof val === 'number' ? val : parseFloat(String(val).replace(/[^0-9]/g, ''));
+    if (isNaN(num)) return val;
+    return 'Rp ' + num.toLocaleString('id-ID');
+  }
+
+  function openModal(p) {
+    if (typeof p === 'string') p = JSON.parse(p.replace(/&quot;/g, '"'));
+    document.getElementById('modalImg').src = p.img || '';
+    document.getElementById('modalImg').alt = p.name;
+    document.getElementById('modalCategory').textContent = p.subcat ? `${p.category} · ${p.subcat}` : p.category;
+    document.getElementById('modalName').textContent = p.name;
+    document.getElementById('modalPrice').textContent = formatPrice(p.price);
+    document.getElementById('modalDesc').textContent = p.desc || '';
+
+    const msg = `Halo Obie Studio, saya tertarik dengan produk:\n\n*${p.name}*\nKategori: ${p.category}\nHarga: ${formatPrice(p.price)}\n\nApakah masih tersedia?`;
+    document.getElementById('modalWaBtn').href = `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Update WA float number
+  document.querySelector('.wa-float').href = `https://wa.me/${CONFIG.WA_NUMBER}`;
+
+  // Escape key closes modal
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
   function toggleMenu() {
     const nav = document.getElementById('mobileNav');
     nav.classList.toggle('open');
     document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
   }
 
-  // Smooth reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
+  function observeCards() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
 
-  document.querySelectorAll('.product-card, .cat-card, .featured-content').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
-    observer.observe(el);
-  });
+    document.querySelectorAll('.product-card, .cat-card, .featured-content').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      observer.observe(el);
+    });
+  }
+
+  // Init
+  loadProducts();
+  observeCards();
 </script>
 </body>
 </html>
