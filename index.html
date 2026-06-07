@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBIE STUDIO — Contemporary Heritage Womenswear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2e;
+    --navy-mid: #12243a;
+    --navy-light: #1a3050;
+    --white: #f8f6f2;
+    --white-dim: rgba(248,246,242,0.7);
+    --white-faint: rgba(248,246,242,0.15);
+    --white-border: rgba(248,246,242,0.2);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Montserrat', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .announce {
+    background: var(--navy-light);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .header-actions button, .header-actions a {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    font-weight: 400;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .header-actions button:hover, .header-actions a:hover { opacity: 1; }
+
+  .cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── LOGO ── */
+  .logo-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logo-wrap img {
+    height: 52px;
+    width: auto;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    gap: 36px;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    display: block;
+    padding: 12px 0;
+  }
+
+  .nav-link:hover { opacity: 1; }
+  .nav-link.active { opacity: 1; border-bottom: 1px solid var(--white); }
+
+  /* ── DROPDOWN ── */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    border: 1px solid var(--white-border);
+    min-width: 180px;
+    padding: 20px 0;
+    z-index: 200;
+  }
+
+  .nav-item:hover .dropdown { display: block; }
+
+  .dropdown a {
+    display: block;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.6;
+    padding: 9px 28px;
+    transition: opacity 0.2s, padding-left 0.2s;
+  }
+
+  .dropdown a:hover { opacity: 1; padding-left: 36px; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 92vh;
+    min-height: 580px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 60%, rgba(26,48,80,0.6) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(13,27,46,0.8) 0%, transparent 60%),
+      linear-gradient(160deg, #0a1525 0%, #0d1b2e 40%, #12243a 70%, #0a1525 100%);
+  }
+
+  /* silk ripple effect */
+  .hero-silk {
+    position: absolute;
+    inset: 0;
+    opacity: 0.35;
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 80px,
+        rgba(248,246,242,0.03) 80px,
+        rgba(248,246,242,0.03) 160px
+      ),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 120px,
+        rgba(248,246,242,0.02) 120px,
+        rgba(248,246,242,0.02) 240px
+      );
+    animation: silkShimmer 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes silkShimmer {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+    100% { transform: scale(1.05) rotate(1deg); opacity: 0.45; }
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    animation: fadeUp 1.2s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 28px;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 300;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 16px;
+  }
+
+  .hero-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--white-dim);
+    margin: 20px auto;
+  }
+
+  .hero-tagline {
+    font-size: 11px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    border: 1px solid var(--white);
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .hero-cta:hover {
+    background: var(--white);
+    color: var(--navy);
+  }
+
+  /* scroll indicator */
+  .scroll-hint {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.4;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .scroll-hint svg { width: 14px; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 40px; }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--white-dim);
+    margin-bottom: 48px;
+  }
+
+  /* ── NEW ARRIVALS ── */
+  .new-arrivals {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .product-card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .product-img {
+    aspect-ratio: 3/4;
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* placeholder pattern for images */
+  .product-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(135deg, var(--navy-light) 25%, transparent 25%) -20px 0,
+      linear-gradient(225deg, var(--navy-light) 25%, transparent 25%) -20px 0,
+      linear-gradient(315deg, var(--navy-light) 25%, transparent 25%),
+      linear-gradient(45deg, var(--navy-light) 25%, transparent 25%);
+    background-size: 40px 40px;
+    background-color: var(--navy-mid);
+    opacity: 0.5;
+  }
+
+  .product-img::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13,27,46,0.5);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-card:hover .product-overlay { opacity: 1; }
+
+  .quick-view {
+    border: 1px solid var(--white);
+    color: var(--white);
+    background: none;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .quick-view:hover { background: var(--white); color: var(--navy); }
+
+  .product-info {
+    padding: 16px 0 24px;
+    background: var(--navy);
+  }
+
+  .product-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .product-category {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 8px;
+  }
+
+  .product-price {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--white-dim);
+  }
+
+  /* ── FEATURED COLLECTION ── */
+  .featured {
+    background: var(--navy-mid);
+    padding: 0;
+  }
+
+  .featured-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .featured-image {
+    background: var(--navy-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 60px,
+      rgba(248,246,242,0.04) 60px,
+      rgba(248,246,242,0.04) 61px
+    );
+  }
+
+  .featured-image::after {
+    content: 'OBIE STUDIO';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--serif);
+    font-size: 28px;
+    letter-spacing: 8px;
+    color: var(--white-faint);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .featured-content {
+    padding: 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .featured-content .section-title { margin-bottom: 24px; }
+
+  .featured-desc {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+
+  /* ── CATEGORIES ── */
+  .categories { max-width: 1400px; margin: 0 auto; }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .cat-card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .cat-img {
+    aspect-ratio: 4/5;
+    background: var(--navy-light);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+  }
+
+  .cat-card:hover .cat-img { transform: scale(1.04); }
+
+  .cat-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13,27,46,0.85) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .cat-img::after {
+    content: attr(data-category);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: var(--serif);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(248,246,242,0.15);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 0;
+  }
+
+  .cat-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px 28px;
+    z-index: 2;
+  }
+
+  .cat-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cat-sub {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  /* ── STORY SECTION ── */
+  .story {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .story-quote {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--white);
+    margin-bottom: 40px;
+  }
+
+  .story-author {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  /* ── NEWSLETTER ── */
+  .newsletter {
+    background: var(--navy-light);
+    text-align: center;
+    padding: 80px 40px;
+    border-top: 1px solid var(--white-border);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .newsletter .section-title { margin-bottom: 8px; }
+
+  .newsletter-sub {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--white-dim);
+    margin-bottom: 36px;
+  }
+
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--white-border);
+    border-right: none;
+    padding: 13px 20px;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    outline: none;
+  }
+
+  .newsletter-form input::placeholder {
+    color: var(--white-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  .newsletter-form button {
+    background: var(--white);
+    color: var(--navy);
+    border: 1px solid var(--white);
+    padding: 13px 28px;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .newsletter-form button:hover { background: var(--navy-light); color: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+
+  .footer-brand img { height: 40px; margin-bottom: 20px; }
+
+  .footer-brand p {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--white-dim);
+    line-height: 1.7;
+    max-width: 260px;
+  }
+
+  .footer-col h4 {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--white-dim);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--white-border);
+    padding: 24px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  .social-links { display: flex; gap: 20px; }
+
+  .social-links a {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover { color: var(--white); }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .mobile-nav.open { display: flex; }
+
+  .mobile-nav a {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .mobile-nav a:hover { opacity: 1; }
+
+  .mobile-close {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-inner { gap: 20px; }
+    .nav-link { font-size: 10px; letter-spacing: 2px; }
+  }
+
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .mobile-menu-btn { display: block; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    .featured-inner { grid-template-columns: 1fr; }
+    .featured-image { min-height: 300px; }
+    footer { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 60px 20px; }
+    .header-inner { padding: 0 20px; }
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
+    .cat-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; padding: 40px 20px; }
+    .footer-bottom { padding: 20px; flex-direction: column; gap: 12px; }
+    .featured-content { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="announce">Contemporary Heritage Womenswear &nbsp;·&nbsp; Free shipping above Rp 1.500.000</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-actions">
+      <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="0" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="0" y1="13" x2="22" y2="13" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+      <button>Search</button>
+    </div>
+
+    <div class="logo-wrap">
+      <img src="/mnt/user-data/uploads/logo.png" alt="Obie Studio" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <div style="display:none; font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:8px; text-transform:uppercase; font-weight:300;">OBIE STUDIO</div>
+    </div>
+
+    <div class="header-actions">
+      <a href="#">Wishlist</a>
+      <button class="cart-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        Bag (0)
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+
+    <div class="nav-item">
+      <a class="nav-link active" href="#">New Arrivals</a>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Obie Belts</a>
+      <div class="dropdown">
+        <a href="#">Heritage</a>
+        <a href="#">Contemporary</a>
+        <a href="#">Atelier</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Camisoles</a>
+      <div class="dropdown">
+        <a href="#">Heritage</a>
+        <a href="#">Contemporary</a>
+        <a href="#">Essential</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Vests</a>
+      <div class="dropdown">
+        <a href="#">Heritage</a>
+        <a href="#">Contemporary</a>
+        <a href="#">Denim</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Skirts</a>
+      <div class="dropdown">
+        <a href="#">Mini</a>
+        <a href="#">Midi</a>
+        <a href="#">Maxi</a>
+        <a href="#">Pleated</a>
+        <a href="#">A-Line</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Scarves</a>
+      <div class="dropdown">
+        <a href="#">Flora</a>
+        <a href="#">Fauna</a>
+        <a href="#">Abstract</a>
+        <a href="#">Limited Prints</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Kebaya Sets</a>
+      <div class="dropdown">
+        <a href="#">Ceremony</a>
+        <a href="#">Contemporary</a>
+        <a href="#">Resort</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Accessories</a>
+      <div class="dropdown">
+        <a href="#">Bangles</a>
+        <a href="#">Earrings</a>
+        <a href="#">Brooches</a>
+        <a href="#">Hair Adornments</a>
+      </div>
+    </div>
+
+    <div class="nav-item">
+      <a class="nav-link" href="#">Story</a>
+    </div>
+
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#" onclick="toggleMenu()">New Arrivals</a>
+  <a href="#" onclick="toggleMenu()">Obie Belts</a>
+  <a href="#" onclick="toggleMenu()">Camisoles</a>
+  <a href="#" onclick="toggleMenu()">Vests</a>
+  <a href="#" onclick="toggleMenu()">Skirts</a>
+  <a href="#" onclick="toggleMenu()">Scarves</a>
+  <a href="#" onclick="toggleMenu()">Kebaya Sets</a>
+  <a href="#" onclick="toggleMenu()">Accessories</a>
+  <a href="#" onclick="toggleMenu()">Story</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-silk"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Contemporary Heritage Womenswear</p>
+    <h1 class="hero-title">Obie</h1>
+    <p class="hero-subtitle">Studio</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Inspired by Indonesian Textile Artistry</p>
+    <a href="#new-arrivals" class="hero-cta">Explore Collection</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.2" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 3v14M2 12l5 5 5-5"/>
+    </svg>
+  </div>
+</div>
+
+<!-- NEW ARRIVALS -->
+<section id="new-arrivals">
+  <div class="new-arrivals">
+    <p class="section-label">Just In</p>
+    <h2 class="section-title">New Arrivals</h2>
+    <div class="section-divider"></div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img" data-label="Kebaya Set · Heritage"></div>
+        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
+        <div class="product-info">
+          <p class="product-category">Kebaya Sets · Ceremony</p>
+          <p class="product-name">The Kartini Set</p>
+          <p class="product-price">Rp 2.850.000</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" data-label="Scarf · Flora"></div>
+        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
+        <div class="product-info">
+          <p class="product-category">Scarves · Flora</p>
+          <p class="product-name">Anggrek Silk Scarf</p>
+          <p class="product-price">Rp 890.000</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" data-label="Camisole · Heritage"></div>
+        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
+        <div class="product-info">
+          <p class="product-category">Camisoles · Heritage</p>
+          <p class="product-name">The Dewi Camisole</p>
+          <p class="product-price">Rp 1.250.000</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img" data-label="Skirt · Midi"></div>
+        <div class="product-overlay"><button class="quick-view">Quick View</button></div>
+        <div class="product-info">
+          <p class="product-category">Skirts · Midi</p>
+          <p class="product-name">The Peranakan Midi</p>
+          <p class="product-price">Rp 1.650.000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED COLLECTION -->
+<div class="featured">
+  <div class="featured-inner">
+    <div class="featured-image"></div>
+    <div class="featured-content">
+      <p class="section-label">Signature Line</p>
+      <h2 class="section-title">The Heritage Edit</h2>
+      <div class="section-divider"></div>
+      <p class="featured-desc">
+        Contemporary Heritage Womenswear inspired by Indonesian textile artistry. Each piece bridges the richness of tradition with the ease of modern dressing — woven with intention, worn with grace.
+      </p>
+      <a href="#" class="hero-cta">Shop Heritage</a>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section>
+  <div class="categories">
+    <p class="section-label">Explore</p>
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="section-divider"></div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-img" data-category="Obie Belts">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3050 0%,#0d1b2e 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Obie Belts</p>
+          <p class="cat-sub">Heritage · Contemporary · Atelier</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-img" data-category="Kebaya Sets">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#12243a 0%,#0a1525 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Kebaya Sets</p>
+          <p class="cat-sub">Ceremony · Contemporary · Resort</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-img" data-category="Scarves">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0d1b2e 0%,#1a3050 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Scarves</p>
+          <p class="cat-sub">Flora · Fauna · Abstract · Limited Prints</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-img" data-category="Camisoles">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a3050 0%,#0d1b2e 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Camisoles</p>
+          <p class="cat-sub">Heritage · Contemporary · Essential</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-img" data-category="Vests">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#0a1525 0%,#12243a 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Vests</p>
+          <p class="cat-sub">Heritage · Contemporary · Denim</p>
+        </div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-img" data-category="Accessories">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,#12243a 0%,#1a3050 100%);"></div>
+        </div>
+        <div class="cat-label">
+          <p class="cat-name">Accessories</p>
+          <p class="cat-sub">Bangles · Earrings · Brooches</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section style="border-top:1px solid var(--white-border); border-bottom:1px solid var(--white-border);">
+  <div class="story">
+    <p class="section-label">Our Story</p>
+    <blockquote class="story-quote">
+      "We believe heritage is not something to be preserved behind glass — it is something to be worn, lived in, and passed forward."
+    </blockquote>
+    <div class="hero-divider" style="margin:0 auto 20px;"></div>
+    <p class="story-author">— Obie Studio, Jakarta</p>
+    <br><br>
+    <a href="#" class="hero-cta">Read Our Story</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <p class="section-label">Stay Close</p>
+  <h2 class="section-title">The Inner Circle</h2>
+  <p class="newsletter-sub">First access to new collections, private events & studio notes</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Your email address">
+    <button type="button">Subscribe</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="/mnt/user-data/uploads/logo.png" alt="Obie Studio" onerror="this.style.display='none'">
+    <p>Contemporary Heritage Womenswear inspired by Indonesian textile artistry. Crafted with intention, worn with grace.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Shop</h4>
+    <a href="#">New Arrivals</a>
+    <a href="#">Obie Belts</a>
+    <a href="#">Camisoles</a>
+    <a href="#">Vests</a>
+    <a href="#">Skirts</a>
+    <a href="#">Scarves</a>
+    <a href="#">Kebaya Sets</a>
+    <a href="#">Accessories</a>
+  </div>
+  <div class="footer-col">
+    <h4>Studio</h4>
+    <a href="#">Our Story</a>
+    <a href="#">Craftsmanship</a>
+    <a href="#">Sustainability</a>
+    <a href="#">Stockists</a>
+    <a href="#">Press</a>
+  </div>
+  <div class="footer-col">
+    <h4>Help</h4>
+    <a href="#">Size Guide</a>
+    <a href="#">Care Guide</a>
+    <a href="#">Shipping & Returns</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQ</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Obie Studio. All rights reserved.</p>
+  <div class="social-links">
+    <a href="#">Instagram</a>
+    <a href="#">Pinterest</a>
+    <a href="#">WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.product-card, .cat-card, .featured-content').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
