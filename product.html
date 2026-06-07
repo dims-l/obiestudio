@@ -384,6 +384,1318 @@
     text-decoration: line-through;
   }
 
+
+  /* ── QTY PRICING ── */
+  .qty-section { margin-bottom: 28px; }
+  .qty-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-dim); margin-bottom: 14px; }
+  .qty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .qty-btn { border: 1px solid var(--white-border); background: transparent; color: var(--white); font-family: var(--sans); padding: 12px 6px; cursor: pointer; text-align: center; transition: border-color 0.2s, background 0.2s; }
+  .qty-btn:hover { border-color: var(--white); }
+  .qty-btn.selected { background: var(--white); color: var(--navy); border-color: var(--white); }
+  .qty-btn .qty-num { display: block; font-size: 12px; font-weight: 500; letter-spacing: 1px; margin-bottom: 4px; }
+  .qty-btn .qty-price { display: block; font-family: var(--serif); font-size: 15px; font-weight: 400; }
+  .qty-btn .qty-save { display: block; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 3px; opacity: 0.65; }
+  .price-display { font-size: 22px; letter-spacing: 2px; color: var(--white); margin-bottom: 4px; transition: all 0.2s; }
+  .price-per { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--white-dim); margin-bottom: 20px; }
+
+  /* ── ACCORDION ── */
+  .accordion-item {
+    border-top: 1px solid var(--white-border);
+  }
+
+  .accordion-item:last-of-type {
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .accordion-trigger {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: left;
+    transition: opacity 0.2s;
+  }
+
+  .accordion-trigger:hover { opacity: 0.75; }
+
+  .accordion-icon {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+
+  .accordion-body {
+    display: none;
+    padding: 0 0 24px;
+  }
+
+  .accordion-item.open .accordion-body { display: block; }
+
+  .accordion-body p {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--white-dim);
+    margin-bottom: 16px;
+  }
+
+  .accordion-body ul {
+    list-style: none;
+    margin-bottom: 16px;
+  }
+
+  .accordion-body ul li {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.8;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .accordion-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+  }
+
+  .accordion-body strong {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  /* ── WA BUTTON ── */
+  .wa-order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--white);
+    color: var(--navy);
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 18px 32px;
+    width: 100%;
+    margin-top: 28px;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid var(--white);
+  }
+
+  .wa-order-btn:hover {
+    background: #25D366;
+    color: #fff;
+    border-color: #25D366;
+  }
+
+  .wa-order-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* size warning */
+  .size-warning {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #e8a87c;
+    margin-top: 10px;
+    display: none;
+  }
+
+  /* ── RELATED PRODUCTS ── */
+  .related {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    border-top: 1px solid var(--white-border);
+  }
+
+  .related .section-label {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 16px;
+  }
+
+  .related .section-title {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .related-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--white-dim);
+    margin-bottom: 40px;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .product-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--white);
+    display: block;
+  }
+
+  .product-img-wrap {
+    aspect-ratio: 3/4;
+    background: var(--navy-mid);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-img-wrap img { transform: scale(1.04); }
+
+  .product-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-img-placeholder span {
+    font-family: var(--serif);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--white-faint);
+  }
+
+  .product-card-info { padding: 14px 0 20px; }
+
+  .product-card-cat {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 4px;
+  }
+
+  .product-card-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .product-card-price {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--white-dim);
+  }
+
+  /* ── WA FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    background: #25D366;
+    color: #fff;
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 400;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: transform 0.2s;
+  }
+
+  .wa-float:hover { transform: scale(1.08); }
+
+  /* ── MOBILE NAV ── */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--navy);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .mobile-nav.open { display: flex; }
+
+  .mobile-nav a {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.75;
+  }
+
+  .mobile-close {
+    position: absolute;
+    top: 28px; right: 32px;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    border-top: 1px solid var(--white-border);
+  }
+
+  .footer-brand p {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--white-dim);
+    line-height: 1.7;
+    max-width: 260px;
+    margin-top: 12px;
+  }
+
+  .footer-brand img { height: 36px; }
+
+  .footer-col h4 {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .footer-col a {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--white-dim);
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--white-border);
+    padding: 24px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  .social-links { display: flex; gap: 20px; }
+
+  .social-links a {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .social-links a:hover { color: var(--white); }
+
+  /* ── LOADING STATE ── */
+  .page-loading {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .loading-dot {
+    width: 8px; height: 8px;
+    background: var(--white-dim);
+    border-radius: 50%;
+    animation: loadPulse 1.2s ease-in-out infinite;
+  }
+  .loading-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loading-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes loadPulse {
+    0%, 100% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .nav-inner { gap: 20px; }
+    .nav-link { font-size: 10px; }
+    .product-page { gap: 40px; }
+    .related-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 900px) {
+    nav { display: none; }
+    .mobile-menu-btn { display: block; }
+
+    .product-page {
+      grid-template-columns: 1fr;
+      padding: 0 20px 100px;
+      gap: 28px;
+    }
+
+    /* Mobile gallery: horizontal swipe */
+    .gallery { flex-direction: column; gap: 12px; }
+
+    .thumbnails {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+      gap: 6px;
+    }
+
+    .thumb { width: 64px; height: 80px; flex-shrink: 0; }
+
+    .gallery-arrow { display: flex; }
+
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+
+    footer { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+
+    /* Sticky WA button on mobile */
+    .wa-order-btn {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      margin: 0;
+      border-radius: 0;
+      z-index: 300;
+      padding: 16px;
+    }
+
+    .product-info-panel { padding-bottom: 80px; }
+
+    .breadcrumb { padding: 16px 20px; }
+    .related { padding: 40px 20px 60px; }
+    .footer-bottom { padding: 20px; flex-direction: column; gap: 12px; }
+  }
+
+  @media (max-width: 600px) {
+    .header-inner { padding: 0 20px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">Contemporary Heritage Womenswear &nbsp;·&nbsp; Free shipping above Rp 1.500.000</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-actions">
+      <button class="mobile-menu-btn" onclick="toggleMenu()">
+        <svg width="22" height="14" viewBox="0 0 22 14" fill="none">
+          <line x1="0" y1="1" x2="22" y2="1" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="0" y1="7" x2="22" y2="7" stroke="currentColor" stroke-width="1.2"/>
+          <line x1="0" y1="13" x2="22" y2="13" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </button>
+      <a href="index.html">Back</a>
+    </div>
+    <div class="logo-wrap">
+      <a href="index.html">
+        <img src="logo.png" alt="Obie Studio" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;">OBIE STUDIO</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <a href="#">Wishlist</a>
+      <a href="#">Bag (0)</a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-item"><a class="nav-link" href="index.html#new-arrivals">New Arrivals</a></div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Obie Belts</a>
+      <div class="dropdown"><a href="#">Heritage</a><a href="#">Contemporary</a><a href="#">Atelier</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Camisoles</a>
+      <div class="dropdown"><a href="#">Heritage</a><a href="#">Contemporary</a><a href="#">Essential</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Vests</a>
+      <div class="dropdown"><a href="#">Heritage</a><a href="#">Contemporary</a><a href="#">Denim</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Skirts</a>
+      <div class="dropdown"><a href="#">Mini</a><a href="#">Midi</a><a href="#">Maxi</a><a href="#">Pleated</a><a href="#">A-Line</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Scarves</a>
+      <div class="dropdown"><a href="#">Flora</a><a href="#">Fauna</a><a href="#">Abstract</a><a href="#">Limited Prints</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Kebaya Sets</a>
+      <div class="dropdown"><a href="#">Ceremony</a><a href="#">Contemporary</a><a href="#">Resort</a></div>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link" href="#">Accessories</a>
+      <div class="dropdown"><a href="#">Bangles</a><a href="#">Earrings</a><a href="#">Brooches</a><a href="#">Hair Adornments</a></div>
+    </div>
+    <div class="nav-item"><a class="nav-link" href="#">Story</a></div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">New Arrivals</a>
+  <a href="#" onclick="toggleMenu()">Obie Belts</a>
+  <a href="#" onclick="toggleMenu()">Camisoles</a>
+  <a href="#" onclick="toggleMenu()">Vests</a>
+  <a href="#" onclick="toggleMenu()">Skirts</a>
+  <a href="#" onclick="toggleMenu()">Scarves</a>
+  <a href="#" onclick="toggleMenu()">Kebaya Sets</a>
+  <a href="#" onclick="toggleMenu()">Accessories</a>
+  <a href="#" onclick="toggleMenu()">Story</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb" id="breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <span id="breadcrumbCat" style="opacity:0.6;">—</span>
+  <span>›</span>
+  <span id="breadcrumbName" style="color:var(--white);">—</span>
+</div>
+
+<!-- PRODUCT PAGE -->
+<div class="product-page" id="productPage">
+  <div class="page-loading">
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<div class="related" id="relatedSection" style="display:none;">
+  <p class="section-label">You May Also Like</p>
+  <h2 class="section-title">More from the Collection</h2>
+  <div class="related-divider"></div>
+  <div class="related-grid" id="relatedGrid"></div>
+</div>
+
+<!-- WA FLOAT -->
+<a class="wa-float" id="waFloat" href="https://wa.me/628979797669" target="_blank" title="Chat via WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="logo.png" alt="Obie Studio" onerror="this.style.display='none'">
+    <p>Contemporary Heritage Womenswear inspired by Indonesian textile artistry.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Shop</h4>
+    <a href="#">New Arrivals</a><a href="#">Obie Belts</a><a href="#">Camisoles</a>
+    <a href="#">Vests</a><a href="#">Skirts</a><a href="#">Scarves</a>
+    <a href="#">Kebaya Sets</a><a href="#">Accessories</a>
+  </div>
+  <div class="footer-col">
+    <h4>Studio</h4>
+    <a href="#">Our Story</a><a href="#">Craftsmanship</a>
+    <a href="#">Sustainability</a><a href="#">Press</a>
+  </div>
+  <div class="footer-col">
+    <h4>Help</h4>
+    <a href="#">Size Guide</a><a href="#">Care Guide</a>
+    <a href="#">Shipping & Returns</a><a href="#">Contact Us</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Obie Studio. All rights reserved.</p>
+  <div class="social-links">
+    <a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">WhatsApp</a>
+  </div>
+</div>
+
+<script>
+  // ════════════════════════════════════════════
+  // KONFIGURASI — sama dengan index.html
+  // ════════════════════════════════════════════
+  const CONFIG = {
+    WA_NUMBER: '628979797669',
+    SHEETS_ID: 'MASUKKAN_SHEETS_ID_DISINI',
+    SHEET_NAME: 'Products',
+  };
+  // ════════════════════════════════════════════
+
+  let allProducts = [];
+  let currentProduct = null;
+  let currentImgIndex = 0;
+  let selectedSize = null;
+  let currentQty = 1;
+  let currentQtyPrice = null;
+
+  // Get product ID from URL: product.html?id=0
+  function getProductIndex() {
+    const params = new URLSearchParams(window.location.search);
+    return parseInt(params.get('id') || '0');
+  }
+
+  function formatPrice(val) {
+    if (!val) return '';
+    const num = typeof val === 'number' ? val : parseFloat(String(val).replace(/[^0-9]/g, ''));
+    if (isNaN(num)) return val;
+    return 'Rp ' + num.toLocaleString('id-ID');
+  }
+
+  function parseBundles(raw) {
+    if (!raw) return null;
+    const parts = String(raw).split('|').map(s => s.trim()).filter(Boolean);
+    if (parts.length < 2) return null;
+    const basePrice = parseFloat(String(parts[0].split(':')[1] || '').replace(/[^0-9.]/g,''));
+    return parts.map((p, i) => {
+      const [qty, price] = p.split(':');
+      const q = parseInt(qty);
+      const priceNum = parseFloat((price||'').replace(/[^0-9.]/g,''));
+      const perPc = (priceNum / q).toFixed(2);
+      const savePct = i === 0 ? null : Math.round((1 - priceNum / (basePrice * q)) * 100);
+      return {
+        qty: q,
+        price: price ? price.trim() : '',
+        save: savePct ? `Save ${savePct}%` : null,
+      };
+    });
+  }
+
+  async function loadFromSheets() {
+    if (CONFIG.SHEETS_ID === 'MASUKKAN_SHEETS_ID_DISINI') {
+      // Demo mode — show sample product
+      return getDemoProduct();
+    }
+
+    try {
+      const url = `https://docs.google.com/spreadsheets/d/${CONFIG.SHEETS_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}`;
+      const res = await fetch(url);
+      const text = await res.text();
+      const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*?)\);/)[1]);
+
+      return json.table.rows
+        .map((row, i) => ({
+          id: i,
+          name:     row.c[0]?.v || '',
+          category: row.c[1]?.v || '',
+          subcat:   row.c[2]?.v || '',
+          price:    row.c[3]?.v || '',
+          desc:     row.c[4]?.v || '',
+          img1:     row.c[5]?.v || '',   // Foto 1 (utama)
+          img2:     row.c[6]?.v || '',   // Foto 2
+          img3:     row.c[7]?.v || '',   // Foto 3
+          img4:     row.c[8]?.v || '',   // Foto 4
+          sizes:    row.c[9]?.v || '',   // Ukuran: "S,M,L,XL" atau kosong
+          details:  row.c[10]?.v || '',  // Detail bullet points (pisah dengan |)
+          fit:      row.c[11]?.v || '',  // Fit info
+          newArr:   row.c[12]?.v,
+          active:   row.c[13]?.v,
+          bundleRaw: row.c[14]?.v || '',  // Bundle pricing: "1:$9.99|3:$28.99|5:$39.99|10:$69.99"
+
+        }))
+        .filter(p => p.active !== false && p.active !== 'FALSE' && p.name)
+        .map(p => ({
+          ...p,
+          bundles: parseBundles(p.bundleRaw),
+        }));
+    } catch (e) {
+      console.error(e);
+      return getDemoProduct();
+    }
+  }
+
+  function getDemoProduct() {
+    return [{
+      id: 0,
+      name: 'The Kartini Set',
+      category: 'Kebaya Sets',
+      subcat: 'Ceremony',
+      price: 2850000,
+      desc: 'A masterpiece of Indonesian heritage artistry. The Kartini Set features hand-embroidered details inspired by Javanese court textiles, reimagined for the modern woman. Perfect for ceremony, celebration, and moments that deserve to be remembered.',
+      img1: '', img2: '', img3: '', img4: '',
+      sizes: 'S,M,L,XL,XXL',
+      bundles: null,
+      details: 'Hand-embroidered silk blend|Kebaya top with matching skirt|Concealed side zip|Fully lined|Dry clean recommended',
+      fit: 'Model is 168cm and wears size S',
+      newArr: true,
+      active: true,
+    }, {
+      id: 1,
+      name: 'Anggrek Silk Scarf',
+      category: 'Scarves',
+      subcat: 'Flora',
+      price: 890000,
+      desc: 'The Anggrek Scarf captures the delicate beauty of Indonesia\'s national flower in a hand-painted silk motif. Wear it draped, tied, or styled as a headpiece.',
+      img1: '', img2: '', img3: '', img4: '',
+      sizes: '',
+      details: '100% silk|Hand-painted motif|90cm x 90cm|Dry clean only',
+      fit: 'One size fits all',
+      newArr: true,
+      active: true,
+    }, {
+      id: 2,
+      name: 'The Dewi Camisole',
+      category: 'Camisoles',
+      subcat: 'Heritage',
+      price: 1250000,
+      desc: 'Flowing, feminine, and effortlessly elegant. The Dewi Camisole is cut from a luxurious silk-blend and features delicate adjustable straps.',
+      img1: '', img2: '', img3: '', img4: '',
+      sizes: 'S,M,L,XL',
+      details: 'Silk-blend fabrication|Adjustable straps|Bias-cut silhouette|Hand wash cold',
+      fit: 'Model is 168cm and wears size S',
+      newArr: false,
+      active: true,
+    }, {
+      id: 3,
+      name: 'The Peranakan Midi',
+      category: 'Skirts',
+      subcat: 'Midi',
+      price: 1650000,
+      desc: 'Inspired by Peranakan tile patterns, this midi skirt features an intricate woven jacquard that celebrates the rich cross-cultural heritage of the archipelago.',
+      img1: '', img2: '', img3: '', img4: '',
+      sizes: 'S,M,L,XL,XXL',
+      details: 'Jacquard woven fabric|Elasticated waistband|Midi length (approx 90cm)|Fully lined',
+      fit: 'Model is 168cm and wears size S',
+      newArr: false,
+      active: true,
+    }];
+  }
+
+  function renderProduct(product, allProds) {
+    currentProduct = product;
+    selectedSize = null;
+
+    // Breadcrumb
+    document.getElementById('breadcrumbCat').textContent = product.category;
+    document.getElementById('breadcrumbName').textContent = product.name;
+    document.title = `${product.name} — OBIE STUDIO`;
+
+    // Collect images
+    const images = [product.img1, product.img2, product.img3, product.img4].filter(Boolean);
+
+    // Sizes
+    const sizes = product.sizes ? product.sizes.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+    // Details bullets
+    const detailItems = product.details ? product.details.split('|').map(s => s.trim()).filter(Boolean) : [];
+
+    const hasSizes = sizes.length > 0;
+
+    const galleryHtml = `
+      <div class="gallery" id="gallery">
+        <div class="thumbnails" id="thumbs">
+          ${images.length > 0 ? images.map((img, i) => `
+            <img class="thumb ${i === 0 ? 'active' : ''}" src="${img}" alt="${product.name} angle ${i+1}" onclick="switchImage(${i})" onerror="this.style.display='none'">
+          `).join('') : `
+            ${[0,1,2,3].map(i => `<div class="thumb" style="background:var(--navy-light);border:1px solid var(--white-border);"></div>`).join('')}
+          `}
+        </div>
+        <div class="main-img-wrap" id="mainImgWrap">
+          ${images.length > 0 ? `
+            <img id="mainImg" src="${images[0]}" alt="${product.name}" onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><span>${product.category}</span></div>'">
+            <button class="gallery-arrow prev" onclick="prevImg()">&#8249;</button>
+            <button class="gallery-arrow next" onclick="nextImg()">&#8250;</button>
+          ` : `
+            <div class="img-placeholder"><span>${product.category}</span></div>
+          `}
+        </div>
+      </div>
+    `;
+
+    const infoHtml = `
+      <div class="product-info-panel">
+        <p class="prod-category">${product.subcat ? product.category + ' · ' + product.subcat : product.category}</p>
+        <h1 class="prod-name">${product.name}</h1>
+        <p class="price-display" id="priceDisplay">${formatPrice(product.price)}</p>
+        <p class="price-per" id="pricePer">per piece</p>
+        <p class="stock-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          In Stock
+        </p>
+
+        <div class="divider"></div>
+
+        <!-- QTY BUNDLE SELECTOR (shown if product has bundle pricing) -->
+        ${product.bundles ? `
+          <div class="qty-section">
+            <p class="qty-label">Quantity</p>
+            <div class="qty-grid">
+              ${product.bundles.map((b,i) => `
+                <button class="qty-btn ${i===0?'selected':''}" onclick="selectQty(${i}, this)" data-price="${b.price}" data-qty="${b.qty}">
+                  <span class="qty-num">${b.qty} ${b.qty===1?'pc':'pcs'}</span>
+                  <span class="qty-price">${b.price}</span>
+                  ${b.save ? `<span class="qty-save">${b.save}</span>` : '<span class="qty-save">&nbsp;</span>'}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        ${hasSizes ? `
+          <p class="size-label">SIZE <span id="selectedSizeLabel"></span></p>
+          <div class="size-grid">
+            ${sizes.map(s => `<button class="size-btn" onclick="selectSize('${s}', this)">${s}</button>`).join('')}
+          </div>
+          <p class="size-warning" id="sizeWarning">Please select a size to continue</p>
+        ` : ''}
+
+        <!-- Accordions -->
+        <div class="accordion-item open" id="acc-desc">
+          <button class="accordion-trigger" onclick="toggleAcc('acc-desc')">
+            Product Description
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <p>${product.desc || 'Product description coming soon.'}</p>
+            ${detailItems.length > 0 ? `
+              <strong>Details</strong>
+              <ul>${detailItems.map(d => `<li>${d}</li>`).join('')}</ul>
+            ` : ''}
+            ${product.fit ? `<strong>Fit</strong><p>${product.fit}</p>` : ''}
+          </div>
+        </div>
+
+        <div class="accordion-item" id="acc-ship">
+          <button class="accordion-trigger" onclick="toggleAcc('acc-ship')">
+            Shipping Details
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <p>Orders placed before 12.00 WIB will be processed the same business day.</p>
+            <p>All Obie Studio orders are hand-packed with care from Jakarta, Indonesia.</p>
+            <strong>Domestic (Indonesia)</strong>
+            <ul>
+              <li>Regular: 2–4 business days</li>
+              <li>Express: 1–2 business days</li>
+              <li>Free shipping on orders above Rp 1.500.000</li>
+            </ul>
+            <strong>International</strong>
+            <ul>
+              <li>7–14 business days</li>
+              <li>Duties and taxes may apply</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item" id="acc-care">
+          <button class="accordion-trigger" onclick="toggleAcc('acc-care')">
+            Care Guide
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-body">
+            <ul>
+              <li>Dry clean or hand wash in cold water</li>
+              <li>Do not tumble dry</li>
+              <li>Store folded or hung in a cool, dry place</li>
+              <li>Iron on low heat with a pressing cloth</li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="wa-order-btn" id="waOrderBtn" href="#" target="_blank" onclick="return handleWaOrder(event)">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order via WhatsApp
+        </a>
+      </div>
+    `;
+
+    document.getElementById('productPage').innerHTML = galleryHtml + infoHtml;
+
+    // Related products (same category, exclude current)
+    const related = allProds.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    if (related.length > 0) {
+      document.getElementById('relatedSection').style.display = 'block';
+      document.getElementById('relatedGrid').innerHTML = related.map(p => `
+        <a class="product-card" href="product.html?id=${p.id}">
+          <div class="product-img-wrap">
+            ${p.img1 ? `<img src="${p.img1}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\'product-img-placeholder\'><span>${p.category}</span></div>'">` : `<div class="product-img-placeholder"><span>${p.category}</span></div>`}
+          </div>
+          <div class="product-card-info">
+            <p class="product-card-cat">${p.subcat ? p.category + ' · ' + p.subcat : p.category}</p>
+            <p class="product-card-name">${p.name}</p>
+            <p class="product-card-price">${formatPrice(p.price)}</p>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Update WA float
+    document.getElementById('waFloat').href = `https://wa.me/${CONFIG.WA_NUMBER}`;
+  }
+
+  function switchImage(index) {
+    const imgs = [currentProduct.img1, currentProduct.img2, currentProduct.img3, currentProduct.img4].filter(Boolean);
+    if (!imgs[index]) return;
+    currentImgIndex = index;
+    const mainImg = document.getElementById('mainImg');
+    if (mainImg) {
+      mainImg.style.opacity = '0';
+      setTimeout(() => { mainImg.src = imgs[index]; mainImg.style.opacity = '1'; }, 150);
+    }
+    document.querySelectorAll('.thumb').forEach((t, i) => {
+      t.classList.toggle('active', i === index);
+    });
+  }
+
+  function prevImg() {
+    const imgs = [currentProduct.img1, currentProduct.img2, currentProduct.img3, currentProduct.img4].filter(Boolean);
+    currentImgIndex = (currentImgIndex - 1 + imgs.length) % imgs.length;
+    switchImage(currentImgIndex);
+  }
+
+  function nextImg() {
+    const imgs = [currentProduct.img1, currentProduct.img2, currentProduct.img3, currentProduct.img4].filter(Boolean);
+    currentImgIndex = (currentImgIndex + 1) % imgs.length;
+    switchImage(currentImgIndex);
+  }
+
+  function selectSize(size, btn) {
+    selectedSize = size;
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const label = document.getElementById('selectedSizeLabel');
+    if (label) label.textContent = size;
+    const warning = document.getElementById('sizeWarning');
+    if (warning) warning.style.display = 'none';
+  }
+
+  function selectQty(idx, btn) {
+    document.querySelectorAll('.qty-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    const price = btn.dataset.price;
+    const qty = btn.dataset.qty;
+    const priceDisplay = document.getElementById('priceDisplay');
+    const pricePer = document.getElementById('pricePer');
+    if (priceDisplay) priceDisplay.textContent = price;
+    if (pricePer) pricePer.textContent = qty == 1 ? 'per piece' : `for ${qty} pieces`;
+    currentQty = parseInt(qty);
+    currentQtyPrice = price;
+  }
+
+  function toggleAcc(id) {
+    const item = document.getElementById(id);
+    item.classList.toggle('open');
+  }
+
+  function handleWaOrder(e) {
+    const hasSizes = currentProduct.sizes && currentProduct.sizes.trim() !== '';
+    if (hasSizes && !selectedSize) {
+      e.preventDefault();
+      const warning = document.getElementById('sizeWarning');
+      if (warning) { warning.style.display = 'block'; }
+      document.querySelector('.size-grid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+
+    const sizeText = selectedSize ? `\nUkuran: ${selectedSize}` : '';
+    const priceText = currentQtyPrice || formatPrice(currentProduct.price);
+    const qtyText = currentQty > 1 ? `\nJumlah: ${currentQty} pcs` : '';
+    const msg = `Halo Obie Studio, saya tertarik dengan:\n\n*${currentProduct.name}*\nKategori: ${currentProduct.category}${sizeText}${qtyText}\nHarga: ${priceText}\n\nApakah masih tersedia?`;
+    const btn = document.getElementById('waOrderBtn');
+    if (btn) btn.href = `https://wa.me/${CONFIG.WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    return true;
+  }
+
+  function toggleMenu() {
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  // Init
+  (async () => {
+    allProducts = await loadFromSheets();
+    const idx = getProductIndex();
+    const product = allProducts[idx] || allProducts[0];
+    if (product) renderProduct(product, allProducts);
+    else {
+      document.getElementById('productPage').innerHTML = '<div style="padding:80px;text-align:center;font-family:var(--serif);font-style:italic;color:var(--white-dim);">Product not found.</div>';
+    }
+  })();
+</script>
+</body>
+</html>
+    font-family: var(--sans);
+    font-weight: 400;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+
+  .header-actions a:hover, .header-actions button:hover { opacity: 1; }
+
+  .logo-wrap {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logo-wrap img { height: 52px; width: auto; }
+  .logo-wrap span {
+    font-family: var(--serif);
+    font-size: 22px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--navy);
+    border-bottom: 1px solid var(--white-border);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    gap: 36px;
+  }
+
+  .nav-item { position: relative; }
+
+  .nav-link {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    display: block;
+    padding: 12px 0;
+  }
+
+  .nav-link:hover { opacity: 1; }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--navy);
+    border: 1px solid var(--white-border);
+    min-width: 180px;
+    padding: 20px 0;
+    z-index: 200;
+  }
+
+  .nav-item:hover .dropdown { display: block; }
+
+  .dropdown a {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    opacity: 0.6;
+    padding: 9px 28px;
+    transition: opacity 0.2s, padding-left 0.2s;
+  }
+
+  .dropdown a:hover { opacity: 1; padding-left: 36px; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+  }
+
+  .breadcrumb a {
+    color: var(--white-dim);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .breadcrumb a:hover { color: var(--white); }
+
+  .breadcrumb span { opacity: 0.4; }
+
+  /* ── PRODUCT LAYOUT ── */
+  .product-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* ── LEFT: GALLERY ── */
+  .gallery { display: flex; gap: 14px; }
+
+  .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .thumb {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0.55;
+    border: 1px solid transparent;
+    transition: opacity 0.2s, border-color 0.2s;
+    background: var(--navy-light);
+    display: block;
+  }
+
+  .thumb.active {
+    opacity: 1;
+    border-color: var(--white);
+  }
+
+  .thumb:hover { opacity: 0.85; }
+
+  .main-img-wrap {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: var(--navy-mid);
+  }
+
+  .main-img-wrap img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+    transition: opacity 0.3s;
+  }
+
+  /* placeholder when no image */
+  .main-img-wrap .img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .main-img-wrap .img-placeholder span {
+    font-family: var(--serif);
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--white-faint);
+    text-transform: uppercase;
+  }
+
+  /* mobile swipe arrows */
+  .gallery-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(13,27,46,0.6);
+    border: none;
+    color: var(--white);
+    width: 36px; height: 36px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 5;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gallery-arrow.prev { left: 8px; }
+  .gallery-arrow.next { right: 8px; }
+
+  /* ── RIGHT: PRODUCT INFO ── */
+  .product-info-panel { padding-top: 8px; }
+
+  .prod-category {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 12px;
+  }
+
+  .prod-name {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 40px);
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .prod-price {
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .stock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #5ecb8a;
+    margin-bottom: 28px;
+  }
+
+  .stock-badge svg { width: 14px; height: 14px; }
+
+  .stock-badge.out { color: var(--white-dim); }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--white-border);
+    margin: 24px 0;
+  }
+
+  /* ── SIZE ── */
+  .size-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-bottom: 14px;
+  }
+
+  .size-label span {
+    color: var(--white);
+    margin-left: 8px;
+  }
+
+  .size-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .size-btn {
+    min-width: 48px;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid var(--white-border);
+    background: transparent;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .size-btn:hover { border-color: var(--white); }
+
+  .size-btn.selected {
+    background: var(--white);
+    color: var(--navy);
+    border-color: var(--white);
+  }
+
+  .size-btn.unavailable {
+    opacity: 0.3;
+    cursor: not-allowed;
+    text-decoration: line-through;
+  }
+
   /* ── ACCORDION ── */
   .accordion-item {
     border-top: 1px solid var(--white-border);
